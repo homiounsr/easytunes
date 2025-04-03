@@ -29,6 +29,19 @@ export default function RootLayout({
       >
         {children}
       </body>
+"use client";
+
+import { PostHogProvider } from "@posthog/react";
+import posthog from "@/lib/posthog";
+
+export default function Layout({ children }: { children: React.ReactNode }) {
+  return (
+    <PostHogProvider client={posthog}>
+      <body>{children}</body>
+    </PostHogProvider>
+  );
+}
+
     </html>
   );
 }
